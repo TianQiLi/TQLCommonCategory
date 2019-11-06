@@ -2,15 +2,15 @@ PODS:
   - TQLCommonCategory (0.0.1)
 
 DEPENDENCIES:
-  - TQLCommonCategory
+  - TQLCommonCategory (from `./../`)
 
-SPEC REPOS:
-  https://github.com/TianQiLi/TQRepo.git:
-    - TQLCommonCategory
+EXTERNAL SOURCES:
+  TQLCommonCategory:
+    :path: "./../"
 
 SPEC CHECKSUMS:
-  TQLCommonCategory: 3e86750253ffc5d8ee80a52493936afa5c2af357
+  TQLCommonCategory: b49ba8fe985377db4f49e705b71d1a3b52c38f0e
 
-PODFILE CHECKSUM: 913891095e0093be0c1df673c6f2e3d6e52964a4
+PODFILE CHECKSUM: af3b44924cfffe99819a0f90aac5a932f1083ee8
 
 COCOAPODS: 1.7.5

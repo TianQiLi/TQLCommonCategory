@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -89,7 +89,6 @@
 				50544535011BD5243066D2B5 /* Pods-TQLCommonCategoryDemo.debug.xcconfig */,
 				FA6D0F51C5EE48C7891C2200 /* Pods-TQLCommonCategoryDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
