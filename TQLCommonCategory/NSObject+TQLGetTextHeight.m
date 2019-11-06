@@ -9,16 +9,16 @@
 #import "NSObject+TQLGetTextHeight.h"
 
 @implementation NSObject (TQLGetTextHeight)
-+(CGFloat)heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFontSize:(NSInteger)fontSize{
-    return [[self class] heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:NO block:nil];
++(CGFloat)tq_heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFontSize:(NSInteger)fontSize{
+    return [self tq_heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:NO block:nil];
 }
 
-+(CGFloat)heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font needRevise:(BOOL)needRevise{
-    return [[self class] heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:needRevise block:nil];
++(CGFloat)tq_heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font needRevise:(BOOL)needRevise{
+    return [self  tq_heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:needRevise block:nil];
 }
 
-+(CGFloat)heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font maxNumberLine:(NSInteger)maxNumLine{
-    CGFloat textHeight = [[self class] heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font needRevise:YES];
++(CGFloat)tq_heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font maxNumberLine:(NSInteger)maxNumLine{
+    CGFloat textHeight = [self tq_heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font needRevise:YES];
     CGFloat maxHeight = maxNumLine * (font.pointSize + _lineSpacing) - _lineSpacing;
     if (maxNumLine && (textHeight > maxHeight)) {
         return maxHeight;
@@ -26,7 +26,7 @@
     return textHeight;
 }
 
-+ (NSInteger)lineRowWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize{
++ (NSInteger)tq_lineRowWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize{
     content = content ? content : @"";
     UIFont * font = [UIFont systemFontOfSize:fontSize];
     NSDictionary * attributes = @{NSFontAttributeName : font,
@@ -42,14 +42,14 @@
    
 }
 
-+ (CGFloat)lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat)lineSpace{
-    NSInteger lineRow = [[self class] lineRowWithText:content withRectWishSize:contentSize withFontSize:fontSize];
++ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat)lineSpace{
+    NSInteger lineRow = [self tq_lineRowWithText:content withRectWishSize:contentSize withFontSize:fontSize];
     CGFloat height = lineRow * lineSpace;
     return height;
 }
 
-+ (CGFloat)lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat )lineSpace maxRow:(NSInteger)maxRow{
-    NSInteger lineRow = [[self class] lineRowWithText:content withRectWishSize:contentSize withFontSize:fontSize];
++ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat )lineSpace maxRow:(NSInteger)maxRow{
+    NSInteger lineRow = [self tq_lineRowWithText:content withRectWishSize:contentSize withFontSize:fontSize];
     if (maxRow) {
         lineRow = MIN(lineRow, maxRow);
     }
@@ -58,7 +58,7 @@
 }
 
 
-+(CGFloat)heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode textAlignmentLeft:(NSTextAlignment)textAlignment  needRevise:(BOOL)needRevise block:(void (^)(BOOL isSingle))block{
++(CGFloat)tq_heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode textAlignmentLeft:(NSTextAlignment)textAlignment  needRevise:(BOOL)needRevise block:(void (^)(BOOL isSingle))block{
     content = content ? content : @"";
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode =lineBreakMode;
@@ -89,8 +89,8 @@
     return height;
 }
 
-+(BOOL)isSingleWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode textAlignmentLeft:(NSTextAlignment)textAlignment{
-    CGFloat height  = [[self class] heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:NO block:nil];
++(BOOL)tq_isSingleWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode textAlignmentLeft:(NSTextAlignment)textAlignment{
+    CGFloat height  = [[self class] tq_heightWithText:content withRectWishSize:contentSize withLineSpacing:_lineSpacing withFont:font lineBreakMode:NSLineBreakByCharWrapping textAlignmentLeft:NSTextAlignmentLeft needRevise:NO block:nil];
     
     CGSize size =[@"" sizeWithAttributes:@{NSFontAttributeName:font}];
     NSInteger singlelineHeight = ceilf(size.height)  + _lineSpacing;
@@ -106,7 +106,7 @@
  * @param :spaceEdge 标签之间的水平间距和垂直间距-top：垂直间距; left:水平间距.  bottom 和right 无用,传0即可
  * @param :paddIngInsetsItem 标签本身的内边距：文本相对于标签本身边框
  */
-+ (CGRect)getBoundsForTextTagArray:(NSArray *)tagArray font:(UIFont *)font edgeMargeForContainerView:(UIEdgeInsets)edgeMargin spaceEdge:(UIEdgeInsets)spaceEdge paddIngInsetsForItem:(UIEdgeInsets)paddIngInsetsItem maxWidth:(NSInteger)maxWidth block:(void (^) (CGRect frame, CGRect boundsContainerView ,BOOL islast, NSString * obj))block{
++ (CGRect)tq_getBoundsForTextTagArray:(NSArray *)tagArray font:(UIFont *)font edgeMargeForContainerView:(UIEdgeInsets)edgeMargin spaceEdge:(UIEdgeInsets)spaceEdge paddIngInsetsForItem:(UIEdgeInsets)paddIngInsetsItem maxWidth:(NSInteger)maxWidth block:(void (^) (CGRect frame, CGRect boundsContainerView ,BOOL islast, NSString * obj))block{
     CGRect containerViewFrame = CGRectZero;
     //TODO: 别名计算高度
     if (tagArray.count > 0) {

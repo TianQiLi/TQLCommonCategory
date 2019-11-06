@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #
   #
   #spec.source       = { :git => "./*" , :tag => "#{spec.version}" }
- spec.source       = { :git => "http://github/TianQiLi/TQLCommonCategory.git", :tag => "#{spec.version}" }
+ spec.source       = { :git => "https://github.com/TianQiLi/TQLCommonCategory.git", :tag => "#{spec.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
