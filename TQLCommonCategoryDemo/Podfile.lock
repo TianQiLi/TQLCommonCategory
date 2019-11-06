@@ -1,0 +1,16 @@
+PODS:
+  - TQLCommonCategory (0.0.1)
+
+DEPENDENCIES:
+  - TQLCommonCategory (from `./../`)
+
+EXTERNAL SOURCES:
+  TQLCommonCategory:
+    :path: "./../"
+
+SPEC CHECKSUMS:
+  TQLCommonCategory: 3d8020737d6504592a6d048c1f6d6d298b9d05de
+
+PODFILE CHECKSUM: b02d3e12c55cf8bc10525a65da676383ff2faf68
+
+COCOAPODS: 1.7.5
