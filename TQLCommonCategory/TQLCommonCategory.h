@@ -11,5 +11,5 @@
 
 #import "NSObject+TQLGetTextHeight.h"
 #import "NSObject+TQLCreateClassFromDictionary.h"
-
+#import "UIView+Extension.h"
 #endif /* TQLCommonCategory_h */
