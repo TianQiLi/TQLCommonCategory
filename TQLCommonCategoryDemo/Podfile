@@ -7,8 +7,8 @@ target 'TQLCommonCategoryDemo' do
 
   # Pods for TQLCommonCategoryDemo
   # local
-   pod 'TQLCommonCategory' , :path => ‘./../’
+   #pod 'TQLCommonCategory' , :path => ‘./../’
    
    #github
-   #pod 'TQLCommonCategory'
+   pod 'TQLCommonCategory'
 end

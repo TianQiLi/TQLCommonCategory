@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <TQLCommonCategory.h>
 @interface ViewController ()
 
 @end
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSString * str = @"tstsetsts";
+    [[self class] tq_heightWithText:@"sfdfsdf" withRectWishSize:CGSizeMake(100, CGFLOAT_MAX) withLineSpacing:4 withFontSize:16];
+    
+    
 }
 
 
