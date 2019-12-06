@@ -7,9 +7,10 @@
 //
 
 #import "UIView+Animation.h"
+#import "POP.h"
 @implementation UIView (Animation)
 
-- (void)startAnimationCutom_twinkleTypeWithCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_twinkleTypeWithCallBack:(void(^)(void))stop_CutomAnimation
 {
     self.alpha = 0;
     [UIView animateWithDuration:0.15 animations:^{
@@ -24,13 +25,10 @@
             }
         }];
     }];
-    
-    
 }
 
-- (void)startAnimationCutom_ScalewithType:(NSUInteger)_type  withCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_ScalewithType:(NSUInteger)_type  withCallBack:(void(^)(void))stop_CutomAnimation
 {
-    
     float _duration=0;
     if (_type==1) {//点击
         _duration=0.4;
@@ -38,39 +36,34 @@
     else if (_type==2) {//展示
         _duration=1;
     }
-    [self startAnimationCutom_ScalewithDuration:_duration withCallBack:stop_CutomAnimation];
-    
+    [self hq_startAnimationCutom_ScalewithDuration:_duration withCallBack:stop_CutomAnimation];
 }
 #pragma mark --放缩
 /*放缩*/
-- (void)startAnimationCutom_ScaleDefaultDurationWithCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_ScaleDefaultDurationWithCallBack:(void(^)(void))stop_CutomAnimation
 {
-    [self startAnimationCutom_ScalewithDuration:0.3 withCallBack:^{
+    [self hq_startAnimationCutom_ScalewithDuration:0.3 withCallBack:^{
         if (stop_CutomAnimation) {
             stop_CutomAnimation();
         }
-        
     }];
 }
 
-- (void)startAnimationCutom_ScalewithDuration:(float)_duration  withCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_ScalewithDuration:(float)_duration  withCallBack:(void(^)(void))stop_CutomAnimation
 {
     [[self subviews] enumerateObjectsUsingBlock:^(id obj,NSUInteger idex,BOOL * stop) {
-        [self performAnimationOnView:obj duration:_duration delay:0 callback:^(void) {
+        [self hq_performAnimationOnView:obj duration:_duration delay:0 callback:^(void) {
             if (idex == (self.subviews.count-1)) {
                 if (stop_CutomAnimation) {
                     stop_CutomAnimation();
                 }
-                
             }
-            
         }];
     }];
-    
 }
 
 /*放缩*/
-- (void)performAnimationOnView:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)())stopAnimation
+- (void)hq_performAnimationOnView:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)(void))stopAnimation
 {
     // Start
     view.transform = CGAffineTransformIdentity;
@@ -89,7 +82,6 @@
                 if (stopAnimation) {
                     stopAnimation();
                 }
-                
             }];
         }];
     }];
@@ -97,52 +89,46 @@
 }
 
 #pragma mark --/*放大-导航*/
-- (void)startAnimationCutom_ScaleToLargeWithDefaultDurationWithCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_ScaleToLargeWithDefaultDurationWithCallBack:(void(^)(void))stop_CutomAnimation
 {
-    [self startAnimationCutom_ScaleToLargeWithDuration:0.3 withCallBack:^{
+    [self hq_startAnimationCutom_ScaleToLargeWithDuration:0.3 withCallBack:^{
         if (stop_CutomAnimation) {
             stop_CutomAnimation();
         }
     }];
 }
 
-- (void)startAnimationCutom_ScaleToLargeWithDuration:(float)_duration  withCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_startAnimationCutom_ScaleToLargeWithDuration:(float)_duration  withCallBack:(void(^)(void))stop_CutomAnimation
 {
     [[self subviews] enumerateObjectsUsingBlock:^(id obj,NSUInteger idex,BOOL * stop) {
-        [self performAnimationOnView_large:obj duration:_duration delay:0 callback:^(void) {
+        [self hq_performAnimationOnView_large:obj duration:_duration delay:0 callback:^(void) {
             if (idex == (self.subviews.count-1)) {
                 if (stop_CutomAnimation) {
                     stop_CutomAnimation();
                 }
-                
             }
-            
         }];
     }];
-    
 }
 
 //push or pop
-- (void)pushOrPop:(BOOL)isPush animationCutom_ScaleToLargeByDefaultDurationWithNavgation:(UINavigationController *)nav withTargetViewController:(UIViewController *)targetViewController withCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_pushOrPop:(BOOL)isPush animationCutom_ScaleToLargeByDefaultDurationWithNavgation:(UINavigationController *)nav withTargetViewController:(UIViewController *)targetViewController withCallBack:(void(^)(void))stop_CutomAnimation
 {
     float duration = 0.26;
     if (!isPush) {
          duration = 0.21;
     }
     
-    [self pushOrPop:isPush AnimationCutom_ScaleToLargeWithDuration:duration withNavgation:nav withTargetViewController:targetViewController withCallBack:^{
+    [self hq_pushOrPop:isPush AnimationCutom_ScaleToLargeWithDuration:duration withNavgation:nav withTargetViewController:targetViewController withCallBack:^{
         if (stop_CutomAnimation) {
             stop_CutomAnimation();
         }
-        
     }];
-    
 }
 
-- (void)pushOrPop:(BOOL)isPush AnimationCutom_ScaleToLargeWithDuration:(float)_duration withNavgation:(UINavigationController *)nav withTargetViewController:(UIViewController *)targetViewController withCallBack:(void(^)())stop_CutomAnimation
+- (void)hq_pushOrPop:(BOOL)isPush AnimationCutom_ScaleToLargeWithDuration:(float)_duration withNavgation:(UINavigationController *)nav withTargetViewController:(UIViewController *)targetViewController withCallBack:(void(^)(void))stop_CutomAnimation
 {
-    
-    [self startAnimationCutom_ScaleToLargeWithDuration:_duration withCallBack:^{
+    [self hq_startAnimationCutom_ScaleToLargeWithDuration:_duration withCallBack:^{
         if (!nav || !targetViewController) {
             if (stop_CutomAnimation) {
                 stop_CutomAnimation();
@@ -170,14 +156,11 @@
                 stop_CutomAnimation();
             }
         }];
-        
-        
     }];
-    
 }
 
 /*放大*/
-- (void)performAnimationOnView_large:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)())stopAnimation
+- (void)hq_performAnimationOnView_large:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)(void))stopAnimation
 {
     // Start
     view.transform = CGAffineTransformIdentity;
@@ -196,34 +179,33 @@
             }
         }];
     }];
-    
 }
 
 #pragma mark --震动
 
-- (void)startAnimationVertical_shakeForSubView:(BOOL)isFromTop  isShowOrDissmiss:(BOOL)isShow completion:(void(^)())stopAnimation
+- (void)hq_startAnimationVertical_shakeForSubView:(BOOL)isFromTop  isShowOrDissmiss:(BOOL)isShow completion:(void(^)(void))stopAnimation
 {
     if (isShow) {
         [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            [obj startAnimationCutom_shake:isFromTop delay:idx * 0.04 completion:stopAnimation];
+            [obj hq_startAnimationCutom_shake:isFromTop delay:idx * 0.04 completion:stopAnimation];
              
         }];
     } else {
         NSInteger count = self.subviews.count;
         [self.subviews enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-             [obj dismissWithShakeAnimation:!isFromTop delay:(count - idx) * 0.08 completion:stopAnimation];
+             [obj hq_dismissWithShakeAnimation:!isFromTop delay:(count - idx) * 0.08 completion:stopAnimation];
         }];
     }
 }
 
-- (void)startAnimationVertical_shake:(BOOL)isFromTop delay:(float)delay completion:(void(^)())stopAnimation
+- (void)hq_startAnimationVertical_shake:(BOOL)isFromTop delay:(float)delay completion:(void(^)())stopAnimation
 {
     if (isFromTop) {
         float _y_offet =  (self.center.y + self.frame.size.height);
         self.transform = CGAffineTransformMakeTranslation(0, -_y_offet);
     } else {
-        float _y_offet = self.superview.height - (self.frame.origin.y) + self.height;
+        float _y_offet = self.superview.frame.size.height - (self.frame.origin.y) + self.frame.size.height;
         self.transform = CGAffineTransformMakeTranslation(0, _y_offet);
     }
     
@@ -234,20 +216,18 @@
          if (stopAnimation) {
              stopAnimation();
          }
-         
      }];
 }
 
-- (void)dismissWithShakeAnimation:(BOOL)isToBottom delay:(float)delay completion:(void(^)())stopAnimation
+- (void)hq_dismissWithShakeAnimation:(BOOL)isToBottom delay:(float)delay completion:(void(^)())stopAnimation
 {
     float y_offet = 0;
     
     if (isToBottom) {
-          y_offet = self.superview.height - (self.frame.origin.y) + self.height;
+          y_offet = self.superview.frame.size.height - (self.frame.origin.y) + self.frame.size.height;
     } else {
         y_offet = -(self.center.y + self.frame.size.height);
     }
-    
     
     [UIView animateWithDuration:1 delay:delay usingSpringWithDamping:0.53 initialSpringVelocity:0 options:0 animations:^(void) {
          self.transform = CGAffineTransformMakeTranslation(0, y_offet);
@@ -259,28 +239,23 @@
          }
          
      }];
-
-    
-    
  }
 
-- (void)startAnimationCutom_shakeForSubView:(BOOL)isLeft completion:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_shakeForSubView:(BOOL)isLeft completion:(void(^)(void))stopAnimation
 {
     [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        [obj startAnimationCutom_shake:isLeft delay:idx * 0.04 completion:stopAnimation];
+        [obj hq_startAnimationCutom_shake:isLeft delay:idx * 0.04 completion:stopAnimation];
     }];
 }
 
-
-
-- (void)startAnimationCutom_shake:(BOOL)isLeft delay:(float)delay completion:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_shake:(BOOL)isLeft delay:(float)delay completion:(void(^)(void))stopAnimation
 {
     if (isLeft) {
-         float _x_offet = self.superview.width - (self.center.x + self.frame.size.width);
+         float _x_offet = self.superview.frame.size.width - (self.center.x + self.frame.size.width);
          self.transform = CGAffineTransformMakeTranslation(_x_offet, 0);
     } else {
-         float _y_offet = self.superview.height - (self.frame.origin.y) + self.height;
+         float _y_offet = self.superview.frame.size.height - (self.frame.origin.y) + self.frame.size.height;
         self.transform = CGAffineTransformMakeTranslation(0, _y_offet);
     }
    
@@ -291,37 +266,35 @@
          if (stopAnimation) {
              stopAnimation();
          }
-         
      }];
 }
 
-- (void)startAnimationCutom_SlideWithDirection:(BOOL)isleft withIndex:(NSInteger)index withBlock:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_SlideWithDirection:(BOOL)isleft withIndex:(NSInteger)index withBlock:(void(^)(void))stopAnimation
 {
     float _duration = 0.3;//0.3
     float _delay = 0.2;//0.2
-    [self startAnimationCutom_SlideWithDirection:isleft withIndex:index duration:(float)_duration delay:(float)_delay withBlock:^{
+    [self hq_startAnimationCutom_SlideWithDirection:isleft withIndex:index duration:(float)_duration delay:(float)_delay withBlock:^{
         if (stopAnimation) {
             stopAnimation();
         }
     }];
 }
 
-- (void)startAnimationCutom_SlideWithDirection:(BOOL)isleft withIndex:(NSInteger)index duration:(float)_duration delay:(float)_delay withBlock:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_SlideWithDirection:(BOOL)isleft withIndex:(NSInteger)index duration:(float)_duration delay:(float)_delay withBlock:(void(^)(void))stopAnimation
 {
     NSInteger count = index;
     [[self subviews] enumerateObjectsUsingBlock:^(id obj,NSUInteger idex,BOOL * stop) {
-        [self performAnimationOnView_Slide:obj withDirection:isleft  duration:_duration delay:_delay * count callback:^(void) {
+        [self hq_performAnimationOnView_Slide:obj withDirection:isleft  duration:_duration delay:_delay * count callback:^(void) {
             if (idex == (self.subviews.count - 1)) {
                 if (stopAnimation) {
                     stopAnimation();
                 }
             }
-            
         }];
     }];
 }
 
-- (void)performAnimationOnView_Slide:(UIView *)view withDirection:(BOOL)isLeft duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)())stopAnimation
+- (void)hq_performAnimationOnView_Slide:(UIView *)view withDirection:(BOOL)isLeft duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)(void))stopAnimation
 {
     float _x_offet=[UIScreen mainScreen].bounds.size.width-self.center.x;
     if (isLeft) {
@@ -339,14 +312,11 @@
              if (stopAnimation) {
                  stopAnimation();
              }
-             
          }];
-         
      }];
-    
 }
 
-- (void)startSlideAnimaitonWithDirection:(BOOL)isLeft callback:(void(^)())stopAnimation
+- (void)hq_startSlideAnimaitonWithDirection:(BOOL)isLeft callback:(void(^)(void))stopAnimation
 {
     float _x_offet = [UIScreen mainScreen].bounds.size.width - self.center.x;
     if (isLeft) {
@@ -364,18 +334,15 @@
              if (stopAnimation) {
                  stopAnimation();
              }
-             
          }];
-         
      }];
-    
 }
 
 
 /*
  magnet
  */
-- (void)startAnimationCutom_magnet_DirectionUp:(BOOL)isUp block:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_magnet_DirectionUp:(BOOL)isUp block:(void(^)(void))stopAnimation
 {
     float _translationY=0;
     float selfHeight = self.frame.size.height;
@@ -405,10 +372,9 @@
         }
         else
             _translationY = selfHeight*maxNum;
-        
     }
     else
-        _translationY = self.frame.origin.y<self.superview.frame.size.height ? fabs(self.superview.frame.size.height-self.origin.y) :self.bounds.size.height;
+        _translationY = self.frame.origin.y<self.superview.frame.size.height ? fabs(self.superview.frame.size.height-self.frame.origin.y) :self.bounds.size.height;
     
     self.alpha = 0;
     if (!isUp) {
@@ -426,13 +392,10 @@
                 stopAnimation();
             }
         }];
-        
     }];
-    
-    
 }
 
-- (void)performAnimationOnView_CutomMagnet:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)())stopAnimation
+- (void)hq_performAnimationOnView_CutomMagnet:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay callback:(void(^)(void))stopAnimation
 {
     float _translationY=0;
     float _tempH=0;
@@ -461,7 +424,7 @@
         
     }
     else
-        _translationY=self.frame.origin.y<self.superview.frame.size.height ? fabs(self.superview.frame.size.height-self.origin.y) :0;
+        _translationY=self.frame.origin.y<self.superview.frame.size.height ? fabs(self.superview.frame.size.height-self.frame.origin.y) :0;
     
     _translationY=[[UIScreen mainScreen]bounds].size.height;
     view.alpha = 0;
@@ -475,10 +438,9 @@
             stopAnimation();
         }
     }];
-    
 }
 
-- (void)startAnimationCutom_Alpha:(void(^)())stopAnimation
+- (void)hq_startAnimationCutom_Alpha:(void(^)(void))stopAnimation
 {
     float _x_offet = [UIScreen mainScreen].bounds.size.width -self.center.x;
     self.transform = CGAffineTransformMakeTranslation(_x_offet, 0);
@@ -494,9 +456,8 @@
     }];
 }
 
-- (void)swimAnimationDefault:(float)distance
+- (void)hq_swimAnimationDefault:(float)distance
 {
-    
     if (self.hidden == YES || self.alpha == 0) {
         return;
     }
@@ -507,11 +468,9 @@
         [UIView animateWithDuration:1.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.transform = CGAffineTransformMakeTranslation(0, distance);
         } completion:^(BOOL finished) {
-            [self swimAnimationDefault:distance];
+            [self hq_swimAnimationDefault:distance];
         }];
-        
     }];
-    
 }
 
 //- (void)startAnimationCutom_3dWithTargetViewController:(UIViewController*)vc withBlock:(void(^)(BOOL finished))completion{
@@ -589,9 +548,8 @@
 //    return img;
 //}
 
-- (void)startAnimationCutomSpringInView:(UIView *)view conpleton:(void (^)())stopAnimation
+- (void)hq_startAnimationCutomSpringInView:(UIView *)view conpleton:(void (^)(void))stopAnimation
 {
-    
     CGRect orgFrame = self.frame;
     CGRect fromFrame = CGRectMake(0, view.bounds.size.height, orgFrame.size.width * 0.5, orgFrame.size.height * 0.5);
     self.frame = fromFrame;
@@ -604,12 +562,10 @@
     cellSpringAnimation.dynamicsFriction    = 11;
     //    cellSpringAnimation.dynamicsTension     = 100;
     [self pop_addAnimation:cellSpringAnimation forKey:@"cellSpringAnimation"];
-    
 }
 
-- (void)startAnimationCutomScaleWithView:(UIView *)animationView inView:(UIView *)inView conpleton:(void (^)())stopAnimation
+- (void)hq_startAnimationCutomScaleWithView:(UIView *)animationView inView:(UIView *)inView conpleton:(void (^)(void))stopAnimation
 {
-    
     POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
     scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(10.0f, 10.0f)];
@@ -628,12 +584,10 @@
         if (stopAnimation) {
             stopAnimation();
         }
-        
     }];
-    
 }
 
-- (void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
+- (void)hq_setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
 {
     CGPoint newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x, view.bounds.size.height * anchorPoint.y);
     CGPoint oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x, view.bounds.size.height * view.layer.anchorPoint.y);
@@ -657,4 +611,5 @@
 
 
 @end
+
 

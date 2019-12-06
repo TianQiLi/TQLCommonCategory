@@ -43,26 +43,10 @@ Pod::Spec.new do |spec|
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
-  #
-
   spec.author             = { "litianqi" => "litianqi@yy.com" }
   # Or just: spec.author    = "litianqi"
   # spec.authors            = { "litianqi" => "litianqi@yy.com" }
   # spec.social_media_url   = "https://twitter.com/litianqi"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
 
   # spec.platform     = :ios
   spec.platform     = :ios, "5.0"
@@ -80,7 +64,8 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
   #
-  #spec.source       = { :git => "./*" , :tag => "#{spec.version}" }
+  
+  #spec.source       = { :path => "."}
  spec.source       = { :git => "https://github.com/TianQiLi/TQLCommonCategory.git", :tag => "#{spec.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -134,5 +119,6 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-
+   spec.dependency "pop"
+  
 end

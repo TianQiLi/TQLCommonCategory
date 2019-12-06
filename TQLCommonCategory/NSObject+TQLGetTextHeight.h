@@ -22,8 +22,8 @@
  * 获取文本行数
  */
 + (NSInteger)tq_lineRowWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize;
-+ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat *)lineSpace;
-+ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat )lineSpace maxRow:(NSInteger)maxRow;
++ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat)lineSpace;
++ (CGFloat)tq_lineRowHeightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withFontSize:(NSInteger )fontSize lineSpace:(CGFloat)lineSpace maxRow:(NSInteger)maxRow;
 
 +(CGFloat)tq_heightWithText:(NSString *)content  withRectWishSize:(CGSize)contentSize withLineSpacing:(CGFloat)_lineSpacing withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode textAlignmentLeft:(NSTextAlignment)textAlignment  needRevise:(BOOL)needRevise block:(void (^)(BOOL isSingle))block;
 
