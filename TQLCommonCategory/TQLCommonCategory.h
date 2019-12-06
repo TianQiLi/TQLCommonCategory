@@ -12,4 +12,9 @@
 #import "NSObject+TQLGetTextHeight.h"
 #import "NSObject+TQLCreateClassFromDictionary.h"
 #import "UIView+Extension.h"
+#import "NSString+Tool.h"
+#import "UIView+Animation.h"
+#import "NSString+Validate.h"
+#import "NSDate+Utilities.h"
+#import "NSDate+Helper.h"
 #endif /* TQLCommonCategory_h */
